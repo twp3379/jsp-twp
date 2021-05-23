@@ -5,6 +5,13 @@
 
 <% request.setCharacterEncoding("utf-8"); %>
 
+<c:set var="attr1" value="value1" />
+<%--
+	pageContext.setAttribute("attr1", "value1");
+--%>
+
+<c:set var="attr1" value="value2" scope="request" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,30 +22,12 @@
 </head>
 <body>
 <div class="container">
-	<form>
-		<input type="number" value="2" name="dan" /> 
-		<br>
-		<input type="submit" value="구구단 출력" />
-	</form>
-	
-	<hr>
-	<h3>구구단 ${param.dan }단 </h3>
-	<c:forEach var="i" begin="1" end="9">
-		${param.dan } X ${i } = ${param.dan * i } <br>
-	</c:forEach>
-	
+	${attr1 } <br>
+	${pageScope.attr1 } <br>
+	${requestScope.attr1 } <br>
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 

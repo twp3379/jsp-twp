@@ -5,6 +5,10 @@
 
 <% request.setCharacterEncoding("utf-8"); %>
 
+<%
+request.setAttribute("desc", "<b>는 굵은 글씨로 표시됨");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,29 +19,15 @@
 </head>
 <body>
 <div class="container">
-	<form>
-		<input type="number" value="2" name="dan" /> 
-		<br>
-		<input type="submit" value="구구단 출력" />
-	</form>
+	b 태그 설명 : ${desc }
+	<br>
+	&lt;&gt;
 	
-	<hr>
-	<h3>구구단 ${param.dan }단 </h3>
-	<c:forEach var="i" begin="1" end="9">
-		${param.dan } X ${i } = ${param.dan * i } <br>
-	</c:forEach>
-	
+	<br>
+	b 태그 설명 : <c:out value="${desc }" />
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 

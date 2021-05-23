@@ -15,23 +15,22 @@
 </head>
 <body>
 <div class="container">
-	<form>
-		<input type="number" value="2" name="dan" /> 
+	<form method="post">
+		이름 : <input type="text" name="name" style="width:100%"/>
 		<br>
-		<input type="submit" value="구구단 출력" />
+		<input type="submit" />
 	</form>
-	
-	<hr>
-	<h3>구구단 ${param.dan }단 </h3>
-	<c:forEach var="i" begin="1" end="9">
-		${param.dan } X ${i } = ${param.dan * i } <br>
-	</c:forEach>
-	
 </div>
+
+<div class="container mt-5">
+	<c:if test="${not empty param.name}">
+		<%-- ${param.name }님 반갑습니다. --%>
+		<c:out value="${param.name }" />님 반갑습니다.
+	</c:if>
+</div>
+
 </body>
 </html>
-
-
 
 
 
