@@ -1,4 +1,3 @@
-use test;
 SELECT * FROM Customers
 ORDER BY CustomerID DESC;
 

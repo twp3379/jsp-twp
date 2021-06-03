@@ -1,4 +1,3 @@
-use test2;
 -- data type
 -- number
 -- INT, DECIMAL
