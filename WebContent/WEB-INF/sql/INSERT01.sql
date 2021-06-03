@@ -1,3 +1,4 @@
+use test;
 SELECT * FROM Customers
 ORDER BY CustomerID DESC;
 
@@ -27,6 +28,8 @@ VALUES
 DESC Customers;
 DESC Employees;
 
+SELECT * FROM Employees
+ORDER BY EmployeeID DESC;
 
 
 
