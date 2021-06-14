@@ -37,7 +37,7 @@
 <body>
 <s2:navbar></s2:navbar>
 <div class="container">
-	<form id="form1" action="${pageContext.request.contextPath }/sample2/modify" method="post">
+	<form id="form1" action="${pageContext.request.contextPath }/sample2/member/modify" method="post">
 		id : <br>
 		<input id="input1" type="text" name="id" value="${member.id }" readonly> <br>
 		pw : <br>
@@ -50,15 +50,17 @@
 		<input type="submit" id="submit1" value="전송" hidden>
 	</form>
 	
-	<c:if test="${not empty message }">
-		<div>
-			${message }
-		</div>
-	</c:if>
+	<s2:message></s2:message>
+</div>
+
+<div>
+작성한 게시물 : <span>${member.numberOfBoard }</span>개
+<br>
+작성한 댓글 : <span>${member.numberOfComment }</span>개
 </div>
 
 <div class="container">
-	<form id="form2" action="${pageContext.request.contextPath}/sample2/remove" method="post">
+	<form id="form2" action="${pageContext.request.contextPath}/sample2/member/remove" method="post">
 		<input id="submit2" type="submit" value="탈퇴">
 	</form>
 </div>

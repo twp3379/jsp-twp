@@ -20,7 +20,7 @@ public class EmployeesDAO {
 				+ "   FROM Employees "
 				+ "   WHERE EmployeeID = ?";
 
-		String url = "jdbc:mysql://13.125.230.175/test"; // 본인 ip
+		String url = "jdbc:mysql://13.125.118.27/test"; // 본인 ip
 		String user = "root";
 		String password = "wnddkdwjdqhcjfl1";
 

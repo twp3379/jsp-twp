@@ -11,7 +11,6 @@ public class Board {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	
 	public String getTitle() {
 		return title;
 	}

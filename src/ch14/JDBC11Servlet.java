@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ch14.bean.Customer;
 import ch14.bean.Employee;
 
 /**
@@ -22,39 +21,38 @@ import ch14.bean.Employee;
 @WebServlet("/JDBC11Servlet")
 public class JDBC11Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public JDBC11Servlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public JDBC11Servlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-        String eid = request.getParameter("eid");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Employee employee = executeJDBC(eid);
+		String employeeId = request.getParameter("eid");
 		
-		request.setAttribute("employee", employee);
+		Employee employee = executeJDBC(employeeId);
+		request.setAttribute("emp", employee);
 		
 		String path = "/ch14/jdbc11.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
 	}
-
-	private Employee executeJDBC(String eid) {
+	
+	private Employee executeJDBC(String id) {
 
 		Employee employee = null; // 리턴할 객체
+		
+		String sql = "SELECT EmployeeID, LastName, FirstName " + 
+				"FROM Employees " + 
+				"WHERE EmployeeID = " + id;
 
-		String sql = "SELECT EmployeeID, LastName, FirstName FROM Employees WHERE EmployeeID = " + eid;
-
-		String url = "jdbc:mysql://13.125.230.175/test"; // 본인 ip
+		String url = "jdbc:mysql://13.125.118.27/test"; // 본인 ip
 		String user = "root";
 		String password = "wnddkdwjdqhcjfl1";
 
@@ -77,14 +75,10 @@ public class JDBC11Servlet extends HttpServlet {
 
 			// 결과 탐색
 			if (rs.next()) {
-				int id = rs.getInt(1);
-				String lastname = rs.getString(2);
-				String firstname = rs.getString(3);
-
 				employee = new Employee();
-				employee.setId(id);
-				employee.setLastname(lastname);
-				employee.setFirstname(firstname);
+				employee.setId(rs.getInt(1));
+				employee.setLastName(rs.getString(2));
+				employee.setFirstName(rs.getString(3));
 			}
 
 		} catch (Exception e) {
@@ -124,11 +118,9 @@ public class JDBC11Servlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

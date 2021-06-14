@@ -6,7 +6,6 @@ public class User {
 	private String address;
 	
 	public User(String name, int age, String address) {
-		super();
 		this.name = name;
 		this.age = age;
 		this.address = address;
@@ -19,8 +18,9 @@ public class User {
 	public int getAge() {
 		return age;
 	}
+	
 	public String getAddress() {
 		return address;
 	}
-
+	
 }

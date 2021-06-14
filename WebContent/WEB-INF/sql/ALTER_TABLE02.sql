@@ -1,31 +1,35 @@
-use test2;
+USE test2;
 DESC Member;
 
 ALTER TABLE Member
 ADD PRIMARY KEY(id);
 
 ALTER TABLE Member
-MODIFY
-password VARCHAR(255) not null;
+MODIFY COLUMN password varchar(255) NOT NULL;
 
 ALTER TABLE Member
-MODIFY
-name VARCHAR(255) not null;
+MODIFY COLUMN name varchar(255) NOT NULL;
 
 ALTER TABLE Member
-MODIFY
-birth DATE not null;
+MODIFY COLUMN birth DATE NOT NULL;
 
 ALTER TABLE Member
-MODIFY
-inserted TIMESTAMP NOT NULL DEFAULT NOW();
+MODIFY COLUMN inserted TIMESTAMP NOT NULL DEFAULT now();
 
 INSERT INTO Member
 (id, password, name, birth)
-VALUE
+VALUES
 ('donald', 'trump', 'trump', '2011-01-01');
 
 SELECT * FROM Member;
+
+
+
+
+
+
+
+
 
 
 

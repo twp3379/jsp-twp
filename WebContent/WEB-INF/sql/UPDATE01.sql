@@ -12,7 +12,7 @@ UPDATE Customers
 SET CustomerName = 'thor',
     ContactName = 'odinson',
     Address = 'Asgard'
-WHERE CustomerID = 2;
+WHERE CustomerID = 1;
 
 -- exercise01
 UPDATE
@@ -36,8 +36,6 @@ SET
  City = 'Seoul'
 , Country = 'Korea'
 WHERE CustomerID = 32;
-
-SELECT * FROM Customers;
 
 
 

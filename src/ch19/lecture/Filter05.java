@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 /**
  * Servlet Filter implementation class Filter05
  */
-@WebFilter("/filter05")
+@WebFilter("/*")
 public class Filter05 implements Filter {
 
     /**
@@ -36,7 +36,6 @@ public class Filter05 implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		request.setCharacterEncoding("utf-8");
-
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
 	}

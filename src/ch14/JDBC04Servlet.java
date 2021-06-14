@@ -43,7 +43,7 @@ public class JDBC04Servlet extends HttpServlet {
 				+ "FROM Employees "
 				+ "WHERE EmployeeID = 1";
 
-		String url = "jdbc:mysql://13.125.230.175/test"; // 본인 ip
+		String url = "jdbc:mysql://13.125.118.27/test"; // 본인 ip
 		String user = "root";
 		String password = "wnddkdwjdqhcjfl1";
 

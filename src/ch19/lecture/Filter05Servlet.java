@@ -1,4 +1,3 @@
-
 package ch19.lecture;
 
 import java.io.IOException;
@@ -35,11 +34,24 @@ public class Filter05Servlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String name = request.getParameter("name");
 		String greeting = name + "님 반갑습니다.";
 		
 		response.setContentType("text/html; charset=utf-8");
 		response.getWriter().print(greeting);
+	
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
