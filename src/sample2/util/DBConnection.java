@@ -10,7 +10,7 @@ public class DBConnection {
 	private static String password;
 	
 	static {
-		url = "jdbc:mysql://13.125.118.27/test2";
+		url = "jdbc:mysql://13.125.230.175/test2";
 		user = "root";
 		password = "wnddkdwjdqhcjfl1";
 	}

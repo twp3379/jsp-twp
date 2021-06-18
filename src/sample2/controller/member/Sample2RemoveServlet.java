@@ -1,27 +1,39 @@
-package sample2.controller;
+package sample2.controller.member;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import sample2.dao.MemberDao;
+import sample2.bean.Member;
+import sample2.service.member.MemberService;
 
 /**
- * Servlet implementation class Sample2CheckDupServlet
+ * Servlet implementation class Sample2RemoveServlet
  */
-@WebServlet("/sample2/checkdup")
-public class Sample2CheckDupServlet extends HttpServlet {
+@WebServlet("/sample2/member/remove")
+public class Sample2RemoveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private MemberService service = null;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Sample2CheckDupServlet() {
+    public Sample2RemoveServlet() {
         super();
         // TODO Auto-generated constructor stub
+    }
+    
+    @Override
+    public void init() throws ServletException {
+    	// TODO Auto-generated method stub
+    	super.init();
+    	this.service = new MemberService();
     }
 
 	/**
@@ -36,22 +48,19 @@ public class Sample2CheckDupServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("userLogined");
 		
-		// System.out.println(id);
+		this.service.remove(member.getId());
 		
-		MemberDao dao = new MemberDao();
+		session.invalidate();
 		
-		response.setContentType("text/plain; charset=utf-8");
-		if (dao.existsId(id)) {
-			response.getWriter().append("not ok");
-		} else {
-			response.getWriter().append("ok");
-		}
-		
+		String path = request.getContextPath() + "/sample2/main";
+		response.sendRedirect(path);
 	}
 
 }
+
 
 
 
